@@ -1,24 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Navigator : MonoBehaviour
 {
+    int index = 0;
     [SerializeField] NaviTag target;
+    [SerializeField] NaviTag defaultTarget;
     Stack<NaviTag> tagStack = new Stack<NaviTag>();
-    [SerializeField] int index = 0;
+
+    //List<NaviTag> hotkeys = new List<NaviTag>();
+
 
     void Start()
     {
-        target = GetComponent<NaviTag>();
-        tagStack.Push(target);
+        defaultTarget = GetComponent<NaviTag>();
+        SetTarget();
     }
 
+    #region Actions
     public void NextItem()
     {
-        if (index < target.getMaxIndex())
+        if (index < target.GetMaxIndex())
         {
             index++;
+            target.PrintLabel(index);
+        }
+        else
+        {
+            Debug.Log("Already at end of list");
         }
     }
 
@@ -27,38 +39,55 @@ public class Navigator : MonoBehaviour
         if (index > 0)
         {
             index--;
-        }
-    }
-
-    public void EnterLevel()
-    {
-        NaviTag newTarget;
-        newTarget = target.getTag(index);
-        if (newTarget != null)
-        {
-            target = newTarget;
-            index = 0;
+            target.PrintLabel(index);
         }
         else
         {
-            Debug.LogError("No tag existed at given index.");
+            Debug.Log("Already at start of list");
         }
     }
 
     public void ExitLevel()
     {
+        if (tagStack.Count > 0)
+        {
+            index = 0;
+            SetTarget(tagStack.Pop());
+        }
+    }
+
+    public void ActivateTarget()
+    {
+        tagStack.Push(target);
+        target.Activate(index, this);
         index = 0;
-        target = tagStack.Pop();
     }
 
     public void ReturnToRoot()
     {
+        SetTarget();
+        tagStack.Clear();
         index = 0;
-        target = GetComponent<NaviTag>();
     }
 
-    List<NaviTag> hotkeys = new List<NaviTag>();
+    #endregion
 
-
-
+    #region Public Methods
+    public void SetTarget(NaviTag newTarget = null)
+    {
+        if (target != null)
+        {
+            target = newTarget;
+        }
+        else
+        {
+            target = defaultTarget;
+        }
+        if(target == null)
+        {
+            target = defaultTarget;
+        }
+        target.PrintList();
+    }
+    #endregion
 }

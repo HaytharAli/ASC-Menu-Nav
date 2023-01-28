@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
 
-    [SerializeField] Navigator navigator;
+    Navigator navigator;
+
+    void Start()
+    {
+        navigator = GetComponent<Navigator>();
+    }
 
     private void Update()
     {
@@ -19,7 +24,7 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            navigator.EnterLevel();
+            navigator.ActivateTarget();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
