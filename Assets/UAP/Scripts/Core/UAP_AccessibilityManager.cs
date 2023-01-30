@@ -4142,7 +4142,15 @@ public class UAP_AccessibilityManager : MonoBehaviour
 		instance.m_AudioQueue.QueueAudio(textToSay, sayAs, true, callback, UAP_AudioQueue.EInterrupt.Elements);
 	}
 
-	private void Say_Internal(string textToSay, bool canBeInterrupted = true, bool allowVoiceOver = true, UAP_AudioQueue.EInterrupt interrupts = UAP_AudioQueue.EInterrupt.Elements)
+    public void Saysomething(string textToSay)
+    {
+
+        UAP_AudioQueue.EAudioType sayAs = UAP_AudioQueue.EAudioType.Element_Text;
+
+        instance.m_AudioQueue.QueueAudio(textToSay, sayAs, true, null, UAP_AudioQueue.EInterrupt.Elements);
+    }
+
+    private void Say_Internal(string textToSay, bool canBeInterrupted = true, bool allowVoiceOver = true, UAP_AudioQueue.EInterrupt interrupts = UAP_AudioQueue.EInterrupt.Elements)
 	{
 		m_AudioQueue.QueueAudio(textToSay, UAP_AudioQueue.EAudioType.App, allowVoiceOver, null, interrupts, canBeInterrupted);
 	}

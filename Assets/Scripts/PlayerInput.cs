@@ -34,5 +34,45 @@ public class PlayerInput : MonoBehaviour
         {
             navigator.ReturnToRoot();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            navigator.HotKey(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            navigator.HotKey(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            navigator.HotKey(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            navigator.HotKey(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            navigator.HotKey(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            navigator.HotKey(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            navigator.HotKey(6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            navigator.HotKey(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            navigator.HotKey(8);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            navigator.HotKey(9);
+        }
     }
 }

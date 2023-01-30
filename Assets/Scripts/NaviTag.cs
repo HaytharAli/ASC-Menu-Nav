@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class NaviTag : MonoBehaviour
 {
     public string label;
+    [SerializeField] protected UAP_AccessibilityManager _accessibilityManager;
 
     /// <summary>
     /// To be implemented.
@@ -32,6 +33,7 @@ public abstract class NaviTag : MonoBehaviour
     void Reset()
     {
         label = name;
+        _accessibilityManager = GameObject.Find("Accessibility Manager").GetComponent<UAP_AccessibilityManager>();
     }
 
 }

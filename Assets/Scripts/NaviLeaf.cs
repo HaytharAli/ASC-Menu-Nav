@@ -32,6 +32,7 @@ public class NaviLeaf : NaviTag
     public override void PrintLabel(int index)
     {
         Debug.Log(actions[index]);
+        _accessibilityManager.Saysomething(actions[index]);
     }
 
     public override void PrintList()
@@ -42,6 +43,7 @@ public class NaviLeaf : NaviTag
             output += action + ", ";
         }
         Debug.Log(output);
+        _accessibilityManager.Saysomething(output);
     }
 
     public override int GetMaxIndex()

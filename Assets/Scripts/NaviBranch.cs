@@ -14,6 +14,7 @@ public class NaviBranch : NaviTag
     public override void PrintLabel(int index)
     {
         Debug.Log(items[index].label);
+        _accessibilityManager.Saysomething(items[index].label);
     }
 
     public override void PrintList()
@@ -24,6 +25,7 @@ public class NaviBranch : NaviTag
             output += tag.label + ", ";
         }
         Debug.Log(output);
+        _accessibilityManager.Saysomething(output);
     }
 
     public override int GetMaxIndex()

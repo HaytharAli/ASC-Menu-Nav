@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &439175864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
+  m_PrefabInstance: {fileID: 1291827725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9e42417444b96439dd7aeff0814d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: The Junk
+  _accessibilityManager: {fileID: 439175864}
 --- !u!1 &785971713814056448
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: Objects
+  _accessibilityManager: {fileID: 439175864}
   items: []
 --- !u!1 &785971714359759732
 GameObject:
@@ -649,6 +662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: Locations
+  _accessibilityManager: {fileID: 439175864}
   items:
   - {fileID: 785971714814201012}
   - {fileID: 785971715003541116}
@@ -1043,6 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: The Boxes
+  _accessibilityManager: {fileID: 439175864}
 --- !u!23 &785971714861228034
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1190,6 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: The Spheres
+  _accessibilityManager: {fileID: 439175864}
 --- !u!4 &785971715039903858
 Transform:
   m_ObjectHideFlags: 0
@@ -1836,8 +1852,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60c53e82266fa649bc09252c3aa56e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accessibilityManager: {fileID: 0}
   target: {fileID: 0}
   defaultTarget: {fileID: 0}
+  rememberPosition: 1
 --- !u!1 &785971715442706431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f3cc7be8025a4469204298744f567d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: Main Menu
+  label: Player
+  _accessibilityManager: {fileID: 439175864}
   items:
   - {fileID: 785971714390513332}
   - {fileID: 785971715781334882}
@@ -2375,6 +2394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: Rooms
+  _accessibilityManager: {fileID: 439175864}
   items: []
 --- !u!54 &785971715789215080
 Rigidbody:

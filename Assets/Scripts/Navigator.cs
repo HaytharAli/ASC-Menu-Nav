@@ -6,18 +6,23 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Navigator : MonoBehaviour
 {
+    [SerializeField] UAP_AccessibilityManager accessibilityManager;
+
     int index = 0;
     [SerializeField] NaviTag target;
     [SerializeField] NaviTag defaultTarget;
     Stack<NaviTag> tagStack = new Stack<NaviTag>();
+    Stack<int> indexStack = new Stack<int>();
 
-    //List<NaviTag> hotkeys = new List<NaviTag>();
+    NaviTag[] hotkeys = new NaviTag[10];
 
+    [SerializeField] bool rememberPosition;
 
     void Start()
     {
         defaultTarget = GetComponent<NaviTag>();
         SetTarget();
+        accessibilityManager = FindObjectOfType<UAP_AccessibilityManager>();
     }
 
     #region Actions
@@ -51,7 +56,10 @@ public class Navigator : MonoBehaviour
     {
         if (tagStack.Count > 0)
         {
-            index = 0;
+            if (rememberPosition)
+            {
+                index = indexStack.Pop();
+            }
             SetTarget(tagStack.Pop());
         }
     }
@@ -59,6 +67,10 @@ public class Navigator : MonoBehaviour
     public void ActivateTarget()
     {
         tagStack.Push(target);
+        if (rememberPosition)
+        {
+            indexStack.Push(index);
+        }
         target.Activate(index, this);
         index = 0;
     }
@@ -67,6 +79,7 @@ public class Navigator : MonoBehaviour
     {
         SetTarget();
         tagStack.Clear();
+        indexStack.Clear();
         index = 0;
     }
 
@@ -88,6 +101,26 @@ public class Navigator : MonoBehaviour
             target = defaultTarget;
         }
         target.PrintList();
+    }
+
+    public void HotKey(int index)
+    {
+        if(hotkeys[index] == null)
+        {
+            hotkeys[index] = target;
+            Debug.Log("Hotkey " + target.label + " assigned to " + index.ToString());
+        }
+        else
+        {
+            tagStack.Push(target);
+            indexStack.Push(index);
+            SetTarget(hotkeys[index]);
+        }
+    }
+
+    public void saySomething(string speech)
+    {
+        accessibilityManager.Saysomething(speech);
     }
     #endregion
 }
